@@ -4,6 +4,7 @@ package com.example;
  * 冒泡排序
  * 稳定
  * 平均时间复杂度：n^2
+ * refer: images/BubbleSort.png
  * */
 public class BubbleSort {
   public static void main(String[] args) {
@@ -15,21 +16,22 @@ public class BubbleSort {
   }
 
   static void sort(int[] arr) {
-    // 第一次循环后的结果
+    //     第一次循环后的结果: 3 5 6 1 7 8 4 2 9
     //    for (int j = 0; j < arr.length - 1; j++) {
     //      if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
     //    }
 
-    //    for (int i = 0; i < arr.length; i++) {
-    //      for (int j = 0; j < arr.length - 1 - i; j++) {
-    //        if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
-    //      }
+    // 结合外循环
+    //        for (int i = 0; i < arr.length; i++) {
+    //          for (int j = 0; j < arr.length - 1 - i; j++) {
+    //            if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
+    //          }
     for (int i = arr.length - 1; i > 0; i--) {
       for (int j = 0; j < i; j++) {
         if (arr[j] > arr[j + 1]) swap(arr, j, j + 1);
       }
 
-      //      System.out.print("\n经过第" + i + "次循环之后，数组内容是: ");
+      //            System.out.print("\n经过第" + i + "次循环之后，数组内容是: ");
       //      print(arr);
     }
   }

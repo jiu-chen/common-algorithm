@@ -9,25 +9,21 @@ public class SelectionSort {
   public static void main(String[] args) {
     int[] arr = {5, 3, 6, 8, 1, 7, 9, 4, 2};
 
-    // 第一次循环
-    //        for (int j=1;j<arr.length;j++){
-    //            if (arr[j]<arr[minPos])
-    //                minPos=j;
-    //        }
-    //        System.out.println("minPos: "+minPos);
-    //        int temp = arr[0];
-    //        arr[0]=arr[minPos];
-    //        arr[minPos]=temp;
-    // 打印
-    //        for (int j : arr) {
-    //            System.out.print(j + " ");
-    //        }
     sort(arr);
     System.out.print("\n最终排序数组: ");
     print(arr);
   }
 
   static void sort(int[] arr) {
+    // 第一次循环: 1 3 6 8 5 7 9 4 2
+    //    int minPos = 0;
+    //    for (int j = 1; j < arr.length; j++) {
+    //      if (arr[j] < arr[minPos]) minPos = j;
+    //    }
+    //    System.out.println("minPos: " + minPos);
+    //    swap(arr, 0, minPos);
+
+    // 结合外循环
     for (int i = 0; i < arr.length - 1; i++) {
       int minPos = i;
       for (int j = i + 1; j < arr.length; j++) {

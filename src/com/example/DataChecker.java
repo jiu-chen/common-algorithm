@@ -22,7 +22,9 @@ public class DataChecker {
     // 验证选择排序
     //    SelectionSort.sort(arr);
     // 验证冒泡排序
-    BubbleSort.sort(arr);
+    //    BubbleSort.sort(arr);
+    // 验证插入排序
+    InsertSort.sort(arr);
     Arrays.sort(arr2);
     boolean same = true;
     for (int j = 0; j < arr.length; j++) {
