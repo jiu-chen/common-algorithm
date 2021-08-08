@@ -32,7 +32,7 @@ public class ShellSort {
     //      }
     //    }
 
-    // 缩短gap: 4->2->1  285360ns
+    // 缩短gap: gap/=2 <=> gap >>= 1
     // Kunth序列
     int h = 1;
     while (h <= arr.length / 3) {

@@ -7,9 +7,9 @@ import java.util.Random;
  * 校验其他算法是否正确
  */
 public class DataChecker {
-  static int[] generateRandomArry() {
+  static int[] generateRandomArray() {
     Random r = new Random();
-    int[] arr = new int[10000];
+    int[] arr = new int[1000];
 
     for (int i = 0; i < arr.length; i++) {
       arr[i] = r.nextInt();
@@ -18,7 +18,7 @@ public class DataChecker {
   }
 
   static void check() {
-    int[] arr = generateRandomArry();
+    int[] arr = generateRandomArray();
     int[] arr2 = new int[arr.length];
 
     System.arraycopy(arr, 0, arr2, 0, arr2.length);
@@ -29,7 +29,11 @@ public class DataChecker {
     // 验证插入排序
     //    InsertSort.sort(arr);
     // 验证希尔排序
-    ShellSort.sort(arr);
+    //    ShellSort.sort(arr);
+
+    // 验证归并排序
+    MergeSort.sort(arr, 0, arr.length - 1);
+
     Arrays.sort(arr2);
     boolean same = true;
     for (int j = 0; j < arr.length; j++) {
