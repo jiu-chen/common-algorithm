@@ -3,10 +3,13 @@ package com.example;
 import java.util.Arrays;
 import java.util.Random;
 
+/*
+ * 校验其他算法是否正确
+ */
 public class DataChecker {
   static int[] generateRandomArry() {
     Random r = new Random();
-    int[] arr = new int[100];
+    int[] arr = new int[10000];
 
     for (int i = 0; i < arr.length; i++) {
       arr[i] = r.nextInt();
@@ -24,7 +27,9 @@ public class DataChecker {
     // 验证冒泡排序
     //    BubbleSort.sort(arr);
     // 验证插入排序
-    InsertSort.sort(arr);
+    //    InsertSort.sort(arr);
+    // 验证希尔排序
+    ShellSort.sort(arr);
     Arrays.sort(arr2);
     boolean same = true;
     for (int j = 0; j < arr.length; j++) {
