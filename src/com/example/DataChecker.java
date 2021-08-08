@@ -32,7 +32,10 @@ public class DataChecker {
     //    ShellSort.sort(arr);
 
     // 验证归并排序
-    MergeSort.sort(arr, 0, arr.length - 1);
+    //    MergeSort.sort(arr, 0, arr.length - 1);
+
+    // 验证快速排序
+    QuickSort.sort(arr, 0, arr.length - 1);
 
     Arrays.sort(arr2);
     boolean same = true;

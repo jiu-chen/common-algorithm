@@ -3,11 +3,12 @@ package com.example;
 /*
  * 归并排序
  * 稳定
- * 平均时间复杂度
+ * 平均时间复杂度: nlog2n
  * refer: images/MergeSort.png
  * 准备三个指针（这里用下标就可以），i, j, k,
  * i是数组第一个元素下标，j指向数组后半部分的第一个元素下标，k是新数组的第一个元素下标
  *
+ * Java & Python中对于对象的排序，就是使用归并排序
  * */
 public class MergeSort {
   public static void main(String[] args) {
