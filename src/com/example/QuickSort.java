@@ -32,7 +32,7 @@ public class QuickSort {
     int pivot = arr[right];
     int i = left;
     int j = right - 1;
-    // i<=j 需要有等于号，否则当长度仅为2的时候 【4，6】会被排序成【6，4]
+    // i<=j 需要有等于号，否则当长度仅为2的时候 [4，6]会被排序成[6，4]
     while (i <= j) {
       // 需要满足 i<=j， 否则的话pivot如果最大或者最小就会出现数组越界或错误的交换
       // arr[i] <= pivot, 等于号保证小于等于轴的元素都在轴的左边
