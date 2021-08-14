@@ -4,7 +4,8 @@ public class BSExist {
   public static void main(String[] args) {
     //
     int[] arr = {1, 2, 4, 6, 9, 11, 12, 14};
-    int target = 12;
+    int target = 10;
+    //      int target = 11;
     int index = binarySearch(arr, target);
     System.out.println("target index: " + index);
   }
