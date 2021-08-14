@@ -31,7 +31,7 @@ public class SingleLinkedList {
     }
   }
 
-  //
+  // 输入链表头节点，奇数长度返回中点，偶数长度返回上中点
   public static ListNode midOrUpMidNode(ListNode head) {
     if (head == null || head.next == null || head.next.next == null) {
       return head;
@@ -47,7 +47,8 @@ public class SingleLinkedList {
 
   public static void main(String[] args) {
     // 通过结点类定义单链表
-    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    //    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};  //6
+    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // 5
     SingleLinkedList L = new SingleLinkedList(arr);
     printList(L.head);
 
