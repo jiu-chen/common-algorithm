@@ -1,4 +1,4 @@
-package com.example;
+package com.sorts;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -12,10 +12,10 @@ public class DataChecker {
     int[] arr = new int[100];
 
     for (int i = 0; i < arr.length; i++) {
-      //      arr[i] = r.nextInt();
+      arr[i] = r.nextInt();
 
       // for CountSort()
-      arr[i] = r.nextInt(10);
+      //      arr[i] = r.nextInt(10);
     }
     return arr;
   }

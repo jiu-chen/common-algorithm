@@ -1,4 +1,4 @@
-package com.example;
+package com.sorts;
 
 /*
  * 希尔排序: 改进的插入排序
@@ -24,27 +24,36 @@ public class ShellSort {
   static void sort(int[] arr) {
     long startTime = System.currentTimeMillis(); // 获取开始时间
 
-    // 取gap=4的时候得到的结果: 1 6 2 3 5 12 8 4 9 13 11 7 10 15 14
-    //    int gap = 4;
-    //    for (int i = gap; i < arr.length; i++) {
-    //      for (int j = i; j > gap - 1; j -= gap) {
-    //        if (arr[j] < arr[j - gap]) swap(arr, j, j - gap);
-    //      }
-    //    }
-
-    // 缩短gap: gap/=2 <=> gap >>= 1
-    // Kunth序列
+    // 取gap=4的时得到的结果: 1 6 2 3 5 12 8 4 9 13 11 7 10 15 14
+    //     Kunth序列
     int h = 1;
     while (h <= arr.length / 3) {
       h = 3 * h + 1;
     }
-    for (int gap = h; gap > 0; gap = (gap - 1) / 3) {
+    int gap = h;
+    while (gap > 0) {
       for (int i = gap; i < arr.length; i++) {
         for (int j = i; j > gap - 1; j -= gap) {
           if (arr[j] < arr[j - gap]) swap(arr, j, j - gap);
         }
       }
+      //      gap >>= 1;
+      gap = gap / 3 - 1;
     }
+
+    // 缩短gap: gap/=2 <=> gap >>= 1
+    // Kunth序列
+    //    int h = 1;
+    //    while (h <= arr.length / 3) {
+    //      h = 3 * h + 1;
+    //    }
+    //    for (int gap = h; gap > 0; gap = (gap - 1) / 3) {
+    //      for (int i = gap; i < arr.length; i++) {
+    //        for (int j = i; j > gap - 1; j -= gap) {
+    //          if (arr[j] < arr[j - gap]) swap(arr, j, j - gap);
+    //        }
+    //      }
+    //    }
 
     long endTime = System.currentTimeMillis(); // 获取结束时间
     System.out.println("程序运行时间： " + (endTime - startTime) + "ms");

@@ -1,4 +1,4 @@
-package com.example;
+package com.sorts;
 
 /*
  * 插入排序
@@ -24,7 +24,7 @@ public class InsertSort {
     // 结合外循环
     for (int i = 1; i < arr.length; i++) {
       for (int j = i; j > 0; j--) {
-        if (arr[j] < arr[j - 1]) swap(arr, j, j - 1);
+        if (arr[j - 1] > arr[j]) swap(arr, j, j - 1);
       }
 
       //      System.out.print("\n经过第" + i + "次循环之后，数组内容是: ");

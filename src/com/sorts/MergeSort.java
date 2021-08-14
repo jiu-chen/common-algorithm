@@ -1,4 +1,4 @@
-package com.example;
+package com.sorts;
 
 /*
  * 归并排序
