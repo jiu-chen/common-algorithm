@@ -24,6 +24,7 @@ public class SingleLinkedList {
     // 这里头节点就是首元节点，链表的第一个元素
     // leetcode
     this.head = new ListNode(1);
+    // 不要直接操作head指针
     ListNode rear = this.head;
     for (int i = 1; i < element.length; i++) {
       rear.next = new ListNode(element[i]);
@@ -31,7 +32,8 @@ public class SingleLinkedList {
     }
   }
 
-  // 输入链表头节点，奇数长度返回中点，偶数长度返回上中点
+  // 输入链表头节点(首元节点)，奇数长度返回中点，偶数长度返回上中点
+  /** 快慢指针 快指针每次走两步，慢指针每次走一步 */
   public static ListNode midOrUpMidNode(ListNode head) {
     if (head == null || head.next == null || head.next.next == null) {
       return head;
@@ -57,6 +59,7 @@ public class SingleLinkedList {
   }
 
   static void printList(ListNode head) {
+    // 不要直接操作head指针
     ListNode p = head;
     System.out.print("link list: ");
     while (p != null) {
