@@ -43,6 +43,7 @@ public class ListPartition {
   }
 
   /*
+   * 方法1:
    * 1 6 3 4 7 5
    * min=-1, max=6, pivot=4, index=0
    * 第1遍: 1 6 3 4 7 5 min=0, max=6, index=1
@@ -78,6 +79,7 @@ public class ListPartition {
     arr[j].value = temp;
   }
 
+  // 方法2: refer: images/ListPartition2.png
   public static SingleLinkedList.ListNode listPartition2(
       SingleLinkedList.ListNode head, int pivot) {
     SingleLinkedList.ListNode sH = null;
