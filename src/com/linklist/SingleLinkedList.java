@@ -15,8 +15,8 @@ public class SingleLinkedList {
   public ListNode head;
 
   // 构造函数
-  public SingleLinkedList() {
-    this.head = new ListNode(0);
+  public SingleLinkedList(int m) {
+    this.head = new ListNode(m);
   }
 
   // 构造函数重载
