@@ -36,6 +36,35 @@ public class SingleLinkedList {
     }
   }
 
+  // 删除一个节点，并重新返回链表
+  /* *
+   * 问: 给一个链表中非头节点，能否删除该节点？
+   * 不能。这种情况下永远无法删除链表的最后一个节点
+   *
+   */
+  static ListNode deleteNode(ListNode head, int index) {
+    if (head == null) {
+      return null;
+    }
+    if (index == 1) {
+      head = head.next;
+      return head;
+    }
+
+    ListNode p = head;
+    ListNode q;
+    int n = 2;
+    while (p != null) {
+      q = p;
+      p = p.next;
+      if (n == index) {
+        q.next = p.next;
+      }
+      n++;
+    }
+    return head;
+  }
+
   static void printList(ListNode head) {
     // 不要直接操作head指针
     ListNode p = head;
@@ -45,5 +74,17 @@ public class SingleLinkedList {
       p = p.next;
     }
     System.out.println();
+  }
+
+  public static void main(String[] args) {
+    // 通过结点类定义单链表
+    //    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};  // midOrUpMidNode: 6,  midOrDownMidNode:
+    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; //  midOrUpMidNode:5,  midOrDownMidNode:
+    SingleLinkedList L = new SingleLinkedList(arr);
+    printList(L.head);
+    int index = 1;
+    //    int index = 3;
+    ListNode head = deleteNode(L.head, index);
+    printList(head);
   }
 }
