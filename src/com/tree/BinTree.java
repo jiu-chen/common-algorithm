@@ -13,7 +13,8 @@ public class BinTree {
     }
   }
 
-  private static Node createBinaryTree(int[] arr, int index) {
+  // 递归发创建二叉树
+  public static Node createBinaryTree(int[] arr, int index) {
     Node treeNode = null;
     if (index < arr.length) {
       treeNode = new Node(arr[index]);
@@ -53,7 +54,7 @@ public class BinTree {
       System.exit(1);
     }
     Stack<Node> stack = new Stack<>();
-    stack.add(head);
+    stack.push(head);
     while (!stack.empty()) {
       head = stack.pop();
       System.out.print(head.value + " ");
@@ -99,8 +100,8 @@ public class BinTree {
 
   /* *
    * 中序遍历: 左根右 (多看多想)
-   * 1. 整条左边届一次入栈
-   * 2. 如果1完成，弹出节点并打印，执行右子树
+   * 1. 整条左边界依次入栈
+   * 2. 如果1无法继续，弹出节点并打印，然后执行右子树
    *
    */
   public static void inOrder(Node head) {
