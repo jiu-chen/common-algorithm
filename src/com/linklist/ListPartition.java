@@ -6,10 +6,11 @@ package com.linklist;
 public class ListPartition {
   public static void main(String[] args) {
     //    int[] arr = {1, 6, 3, 4, 7, 5};
-    int[] arr = {1, 6, 3, 8, 7, 4, 4, 4, 5};
+    //    int[] arr = {1, 6, 3, 8, 7, 4, 4, 4, 5};
+    int[] arr = {5, 3, 5, 1, 4, 7, 6};
     SingleLinkedList L = new SingleLinkedList(arr);
     SingleLinkedList.printList(L.head);
-    int pivot1 = 4;
+    int pivot1 = 5;
     SingleLinkedList.ListNode res1 = listPartition1(L.head, pivot1);
     System.out.printf("pivot:%d 方法1: ", pivot1);
     SingleLinkedList.printList(res1);
@@ -45,6 +46,13 @@ public class ListPartition {
 
   /*
    * 方法1:
+   * index: 当前数下标
+   * left: 左侧位置
+   * right: 右侧位置
+   * 比较当前数值和pivot，
+   * 如果当前数值小于pivot,左侧位置向右移动一位，交换当前数与左侧位置数值，当前位置右移一位
+   * 如果等于pivot, 当前位置右移一位
+   * 如果大于pivot，右侧位置向左移动一位，交换当前数与右侧位置数值
    * 1 6 3 4 7 5
    * left=-1, right=6, pivot=4, index=0
    * 第0遍: 1 6 3 4 7 5 left=0, right=6, index=1

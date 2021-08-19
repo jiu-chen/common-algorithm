@@ -37,9 +37,9 @@ public class MergeSort {
   }
 
   //  mid = left + (right - left) / 2;
-  // 1    3    5    7,    2     4    6
+  // 1    3    5    7    2     4    6
   // left                 mid        right
-  // 1    3    5    7,    2     4    6    8
+  // 1    3    5    7    2     4    6    8
   // left                 mid             right
   static void merge(int[] arr, int left, int mid, int right) {
     int i, j, k;
@@ -63,10 +63,10 @@ public class MergeSort {
     while (j <= right) temp[k++] = arr[j++];
     //    print(temp);
 
-    //    for (int m = 0; m < temp.length; m++) {
-    //      arr[left + m] = temp[m];
-    //    }
-    System.arraycopy(temp, 0, arr, left, temp.length);
+    for (int m = 0; m < temp.length; m++) {
+      arr[left + m] = temp[m];
+    }
+    //    System.arraycopy(temp, 0, arr, left, temp.length);
   }
 
   static void print(int[] arr) {
