@@ -1,11 +1,12 @@
 package com.linklist;
 
 /*
- * 将链表排列成左边小，中间相等，右边大的形式
+ * 将链表中的节点排列成左边小，中间相等，右边大的形式
  * */
 public class ListPartition {
   public static void main(String[] args) {
-    int[] arr = {1, 6, 3, 4, 7, 5};
+    //    int[] arr = {1, 6, 3, 4, 7, 5};
+    int[] arr = {1, 6, 3, 8, 7, 4, 4, 4, 5};
     SingleLinkedList L = new SingleLinkedList(arr);
     SingleLinkedList.printList(L.head);
     int pivot1 = 4;
@@ -45,30 +46,30 @@ public class ListPartition {
   /*
    * 方法1:
    * 1 6 3 4 7 5
-   * min=-1, max=6, pivot=4, index=0
-   * 第1遍: 1 6 3 4 7 5 min=0, max=6, index=1
-   * 第2遍: 1 5 3 4 7 6 min=0, max=5, index=1 (!)
-   * 第3遍: 1 7 3 4 5 6 min=0, max=4, index=1 (!)
-   * 第4遍: 1 4 3 7 5 6 min=0, max=3, index=1 (!)
-   * 第5遍: 1 4 3 7 5 6 min=0, max=3, index=2 (!)
-   * 第6遍: 1 3 4 7 5 6 min=1, max=3, index=3 (!)
+   * left=-1, right=6, pivot=4, index=0
+   * 第0遍: 1 6 3 4 7 5 left=0, right=6, index=1
+   * 第2遍: 1 5 3 4 7 6 left=0, right=5, index=1 (!)
+   * 第3遍: 1 7 3 4 5 6 left=0, right=4, index=1 (!)
+   * 第4遍: 1 4 3 7 5 6 left=0, right=3, index=1 (!)
+   * 第5遍: 1 4 3 7 5 6 left=0, right=3, index=2 (!)
+   * 第6遍: 1 3 4 7 5 6 left=1, right=3, index=3 (!)
    * inde==max, end while
    **/
   public static void arrPartition(SingleLinkedList.ListNode[] arr, int pivot) {
-    int min = -1;
-    int max = arr.length;
+    int left = -1;
+    int right = arr.length; //
     int index = 0;
-    while (index != max) {
+    while (index != right) {
       if (arr[index].value < pivot) {
-        min++;
-        swap(arr, min, index);
+        left++;
+        swap(arr, left, index);
         index++;
         //        swap(arr, ++min, index++);
       } else if (arr[index].value == pivot) {
         index++;
       } else {
-        max--;
-        swap(arr, index, max);
+        right--;
+        swap(arr, index, right);
       }
     }
   }

@@ -17,6 +17,13 @@ public class QuickSort {
     sort(arr, 0, arr.length - 1);
     System.out.print("\n最终排序: ");
     print(arr);
+
+    // fot test
+    // 快速排序第一次排序
+    int[] arr1 = {1, 6, 3, 8, 4, 4, 4, 5};
+    int pivot = 4;
+    quickPartition(arr1, pivot);
+    print(arr1);
   }
 
   static void sort(int[] arr, int left, int right) {
@@ -44,11 +51,30 @@ public class QuickSort {
       //      System.out.println("===");
       //      print(arr);
     }
-    // 交换使用的是i的下标
+    // 交换使用的是数组的下标
     swap(arr, i, right);
 
     // 返回新的轴的下标
     return i;
+  }
+
+  /* *
+   * 快速排序
+   * 1, 6, 3, 8, 4, 4, 4, 4, 5
+   * 第一次排序: 1 4 3 4 4 8 6 5
+   */
+  public static void quickPartition(int[] arr, int pivot) {
+    int i = 0;
+    int j = arr.length - 1;
+    while (i <= j) {
+      while (i <= j && arr[i] <= pivot) {
+        i++;
+      }
+      while (i <= j && arr[j] > pivot) {
+        j--;
+      }
+      if (i < j) swap(arr, i, j);
+    }
   }
 
   static void swap(int[] arr, int m, int n) {
@@ -58,6 +84,7 @@ public class QuickSort {
   }
 
   static void print(int[] arr) {
+    System.out.println("\nprint arr: ");
     for (int j : arr) {
       System.out.print(j + " ");
     }
