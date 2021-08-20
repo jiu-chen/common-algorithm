@@ -9,20 +9,41 @@ import java.util.Queue;
  */
 public class TreeSerialization {
 
-  // 先序方式序列化
+  // 先序方式序列化: 将二叉树存储为队列
   public static Queue<String> preSerial(BinTree.Node head) {
     Queue<String> ans = new LinkedList<>();
     pres(head, ans);
     return ans;
   }
 
-  private static void pres(BinTree.Node head, Queue<String> ans) {
-    if (head == null) ans.add(null);
-    else {
+  public static void pres(BinTree.Node head, Queue<String> ans) {
+    if (head == null) {
+      ans.add(null);
+    } else {
       ans.add(String.valueOf(head.value));
       pres(head.left, ans);
       pres(head.right, ans);
     }
+  }
+
+  // 二叉树反序列化: 将队列转换为二叉树
+  public static BinTree.Node buildByPreQueue(Queue<String> prelist) {
+    if (prelist == null || prelist.size() == 0) {
+      return null;
+    }
+    return preb(prelist);
+  }
+
+  public static BinTree.Node preb(Queue<String> prelist) {
+    String value = prelist.poll();
+    if (value == null) {
+      return null;
+    }
+    BinTree.Node head = new BinTree.Node(Integer.parseInt(value));
+    head.left = preb(prelist);
+    head.right = preb(prelist);
+
+    return head;
   }
 
   public static void main(String[] args) {
@@ -34,5 +55,17 @@ public class TreeSerialization {
       System.out.print(ans.poll() + " ");
     }
     System.out.println();
+
+    Queue<String> queue = new LinkedList<>();
+    queue.add(String.valueOf(1));
+    queue.add(String.valueOf(2));
+    queue.add(null);
+    queue.add(String.valueOf(3));
+    queue.add(null);
+    queue.add(null);
+    queue.add(null);
+    BinTree.Node root = buildByPreQueue(queue);
+
+    LevelTraverse.level(root);
   }
 }
