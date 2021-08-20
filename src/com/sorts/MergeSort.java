@@ -14,8 +14,13 @@ public class MergeSort {
   public static void main(String[] args) {
     int[] arr = {5, 3, 6, 8, 1, 7, 9, 4, 2};
 
-    // 尝试将一个左右分别有序的数组排序
-    //    int[] arrSorted = {1, 3, 6, 8, 2, 7, 9, 11};
+    // 尝试将一个左右分别有序的数组合并
+    int[] arrSorted = {1, 3, 6, 8, 2, 7, 9, 11};
+    //    int mid = left + (right - left) / 2;
+    int mid = 0 + (arrSorted.length - 0) / 2;
+    merge(arrSorted, 0, mid, arrSorted.length - 1);
+    System.out.print("左右部分分别有序的数组排序: ");
+    print(arrSorted);
 
     sort(arr, 0, arr.length - 1);
     System.out.print("\n最终排序: ");
