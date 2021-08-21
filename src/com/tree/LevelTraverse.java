@@ -9,7 +9,7 @@ import java.util.Queue;
  */
 public class LevelTraverse {
   static void level(BinTree.Node head) {
-    System.out.print("level traverse: ");
+    System.out.print("层序遍历: ");
     Queue<BinTree.Node> queue = new LinkedList<>();
     queue.add(head);
 

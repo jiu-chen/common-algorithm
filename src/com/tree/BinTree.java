@@ -31,13 +31,13 @@ public class BinTree {
     if (head == null) {
       return;
     }
-    // 先序遍历: 头左右
+    // 先序遍历: 根左右
     //    System.out.print(head.value + " ");
     f(head.left);
-    // 中序遍历: 左头右
+    // 中序遍历: 左根右
     //    System.out.print(head.value + " ");
     f(head.right);
-    // 后序遍历: 左右头
+    // 后序遍历: 左右根
     System.out.print(head.value + " ");
   }
 
@@ -50,6 +50,7 @@ public class BinTree {
    * 3. 如果有左节点，压左节点
    */
   public static void preOrder(Node head) {
+    System.out.println("二叉树前序遍历: ");
     if (head == null) {
       System.exit(1);
     }
