@@ -47,6 +47,9 @@ public class TreeSerialization {
   }
 
   // 二叉树层序遍历序列化
+  /*
+   *  对比二叉树层序遍历
+   */
   public static Queue<String> levelSerial(BinTree.Node head) {
     Queue<String> ans = new LinkedList<>();
     if (head == null) {

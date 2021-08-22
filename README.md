@@ -1,3 +1,12 @@
-# common-algorithm
+# collect structure && algorithm
 
-import the code to IntelliJ IDEA
+including:
+
+- sort
+- tree
+- linkedlist
+- heap
+
+## tips
+
+- import the code to IntelliJ IDEA
