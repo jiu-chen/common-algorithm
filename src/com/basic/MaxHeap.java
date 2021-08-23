@@ -20,6 +20,9 @@ public class MaxHeap {
     }
   }
 
+  /*
+   * 将value插入到堆中，并且保证新的堆依然是大根堆
+   */
   public void push(int value) {
     if (heapSize == limit) {
       throw new RuntimeException("heap is full");
@@ -89,29 +92,29 @@ public class MaxHeap {
   }
 
   /*
-   * 堆排序：先将数组搞成大根堆
-   * 然后将第一个数（最大数）与最后一个位置调用，此时最大数确定了，剩下的数组重新构造大根堆
-   * 依次循环
+   * 堆排序
+   * 1.先将数组变成大根堆结构: 建堆过程
+   *    1) 从上到下的方法，时间复杂度为O(N*logN)
+   *    2) 从下到上的方法，时间复杂度为O(N)
+   * 2. 把对的最大值和堆末尾的值交换，然后减少堆的大小之后，再去调整堆
+   *    周而复始，时间复杂度为O(N*logN)
+   * 3. 对的大小减小为0之后，排序完成
    */
   public static void heapSort(int[] arr) {
     if (arr == null || arr.length <= 1) {
       return;
     }
-    // O(N*logN)
-    // 构造大根堆
+    // 构造大根堆 1.1  O(N*logN)
     //    for (int i = 0; i < arr.length; i++) { // O(N)
     //      heapInsert(arr, i); // O(logN)
     //    }
 
-    // 构造大根堆
-    // O(N)
+    // 构造大根堆 1.2  O(N)
     for (int i = arr.length - 1; i >= 0; i--) {
       heapify(arr, i, arr.length);
     }
 
     int heapSize = arr.length;
-    swap(arr, 0, --heapSize);
-
     // O(N*logN)
     while (heapSize > 0) { // O(N)
       heapify(arr, 0, heapSize); // O(logN)
