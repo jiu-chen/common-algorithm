@@ -8,13 +8,13 @@ import java.util.Queue;
  * 弹出即打印，然后添加弹出节点的左右节点
  */
 public class LevelTraverse {
-  static void level(BinTree.Node head) {
+  static void level(Node head) {
     System.out.print("层序遍历: ");
-    Queue<BinTree.Node> queue = new LinkedList<>();
+    Queue<Node> queue = new LinkedList<>();
     queue.add(head);
 
     while (!queue.isEmpty()) {
-      BinTree.Node cur = queue.poll();
+      Node cur = queue.poll();
       System.out.print(cur.value + " ");
       if (cur.left != null) {
         queue.add(cur.left);
@@ -30,19 +30,19 @@ public class LevelTraverse {
    * 求二叉树最大层宽度
    */
 
-  public static int maxWidth(BinTree.Node head) {
+  public static int maxWidth(Node head) {
     if (head == null) return 0;
 
-    Queue<BinTree.Node> queue = new LinkedList<>();
+    Queue<Node> queue = new LinkedList<>();
     queue.add(head);
-    BinTree.Node curEnd = head; // 标记当前层最右节点
-    BinTree.Node nextEnd = null; // 标记下一层最右节点
+    Node curEnd = head; // 标记当前层最右节点
+    Node nextEnd = null; // 标记下一层最右节点
 
     int max = 0; // 最大宽度
     int curLevelNodes = 0; // 当前层节点数
 
     while (!queue.isEmpty()) {
-      BinTree.Node cur = queue.poll();
+      Node cur = queue.poll();
       if (cur.left != null) {
         queue.add(cur.left);
         nextEnd = cur.left;
@@ -68,7 +68,7 @@ public class LevelTraverse {
 
     // 多看构建方法， 递归的奥秘
     // index就是数组的下标
-    BinTree.Node rootNode = BinTree.createBinaryTree(arr, 0);
+    Node rootNode = BinTree.createBinaryTree(arr, 0);
     //                 1
     //          2            3
     //      4       5     6     7

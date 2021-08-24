@@ -2,16 +2,17 @@ package com.tree;
 
 import java.util.Stack;
 
-public class BinTree {
-  public static class Node {
-    public int value;
-    public Node left = null;
-    public Node right = null;
+class Node {
+  public int value;
+  public Node left = null;
+  public Node right = null;
 
-    public Node(int v) {
-      value = v;
-    }
+  public Node(int v) {
+    value = v;
   }
+}
+
+public class BinTree {
 
   // 递归发创建二叉树
   public static Node createBinaryTree(int[] arr, int index) {

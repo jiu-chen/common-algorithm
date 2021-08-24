@@ -10,13 +10,13 @@ import java.util.Queue;
 public class TreeSerialization {
 
   // 先序方式序列化: 将二叉树存储为队列
-  public static Queue<String> preSerial(BinTree.Node head) {
+  public static Queue<String> preSerial(Node head) {
     Queue<String> ans = new LinkedList<>();
     pres(head, ans);
     return ans;
   }
 
-  public static void pres(BinTree.Node head, Queue<String> ans) {
+  public static void pres(Node head, Queue<String> ans) {
     if (head == null) {
       ans.add(null);
     } else {
@@ -27,19 +27,19 @@ public class TreeSerialization {
   }
 
   // 二叉树先序方式反序列化: 将队列转换为二叉树
-  public static BinTree.Node preDeserial(Queue<String> prelist) {
+  public static Node preDeserial(Queue<String> prelist) {
     if (prelist == null || prelist.size() == 0) {
       return null;
     }
     return pred(prelist);
   }
 
-  public static BinTree.Node pred(Queue<String> prelist) {
+  public static Node pred(Queue<String> prelist) {
     String value = prelist.poll();
     if (value == null) {
       return null;
     }
-    BinTree.Node head = new BinTree.Node(Integer.parseInt(value));
+    Node head = new Node(Integer.parseInt(value));
     head.left = pred(prelist);
     head.right = pred(prelist);
 
@@ -50,13 +50,13 @@ public class TreeSerialization {
   /*
    *  对比二叉树层序遍历
    */
-  public static Queue<String> levelSerial(BinTree.Node head) {
+  public static Queue<String> levelSerial(Node head) {
     Queue<String> ans = new LinkedList<>();
     if (head == null) {
       ans.add(null);
     } else {
       ans.add(String.valueOf(head.value));
-      Queue<BinTree.Node> queue = new LinkedList<>();
+      Queue<Node> queue = new LinkedList<>();
       queue.add(head);
       while (!queue.isEmpty()) {
         head = queue.poll();
@@ -77,16 +77,16 @@ public class TreeSerialization {
     return ans;
   }
 
-  public static BinTree.Node levelDeserial(Queue<String> levelList) {
+  public static Node levelDeserial(Queue<String> levelList) {
     if (levelList == null || levelList.size() == 0) {
       return null;
     }
-    BinTree.Node head = generateNode(levelList.poll());
-    Queue<BinTree.Node> queue = new LinkedList<>();
+    Node head = generateNode(levelList.poll());
+    Queue<Node> queue = new LinkedList<>();
     if (head != null) {
       queue.add(head);
     }
-    BinTree.Node node = null;
+    Node node = null;
     while (!queue.isEmpty()) {
       node = queue.poll();
       node.left = generateNode(levelList.poll());
@@ -101,11 +101,11 @@ public class TreeSerialization {
     return head;
   }
 
-  private static BinTree.Node generateNode(String value) {
+  private static Node generateNode(String value) {
     if (value == null) {
       return null;
     }
-    return new BinTree.Node(Integer.parseInt(value));
+    return new Node(Integer.parseInt(value));
   }
 
   /*
@@ -164,14 +164,14 @@ public class TreeSerialization {
 
   public static void main(String[] args) {
     int[] arr = {1, 2, 3, 4, 5, 6, 7};
-    BinTree.Node rootNode = BinTree.createBinaryTree(arr, 0);
+    Node rootNode = BinTree.createBinaryTree(arr, 0);
     System.out.println("先序方式序列化");
     Queue<String> ans = preSerial(rootNode);
     printQueue(ans);
 
     System.out.println("先序方式反序列化");
     Queue<String> queue = createPreQueue();
-    BinTree.Node root = preDeserial(queue);
+    Node root = preDeserial(queue);
     LevelTraverse.level(root);
 
     System.out.println("层序遍历序列化");
@@ -180,7 +180,7 @@ public class TreeSerialization {
 
     System.out.println("层序遍历反序列化");
     Queue<String> queue2 = createLevelQueue();
-    BinTree.Node root2 = levelDeserial(queue2);
+    Node root2 = levelDeserial(queue2);
     printQueue(queue2);
     LevelTraverse.level(root2);
     BinTree.preOrder(root2);

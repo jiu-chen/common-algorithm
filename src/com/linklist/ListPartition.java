@@ -11,25 +11,24 @@ public class ListPartition {
     SingleLinkedList L = new SingleLinkedList(arr);
     SingleLinkedList.printList(L.head);
     int pivot1 = 5;
-    SingleLinkedList.ListNode res1 = listPartition1(L.head, pivot1);
+    Node res1 = listPartition1(L.head, pivot1);
     System.out.printf("pivot:%d 方法1: ", pivot1);
     SingleLinkedList.printList(res1);
 
     int pivot2 = 5;
     System.out.printf("\npivot:%d 方法2: ", pivot2);
-    SingleLinkedList.ListNode res = listPartition2(L.head, pivot2);
+    Node res = listPartition2(L.head, pivot2);
     SingleLinkedList.printList(res);
   }
 
-  public static SingleLinkedList.ListNode listPartition1(
-      SingleLinkedList.ListNode head, int pivot) {
+  public static Node listPartition1(Node head, int pivot) {
     int len = 0;
-    SingleLinkedList.ListNode p = head;
+    Node p = head;
     while (p != null) {
       len++;
       p = p.next;
     }
-    SingleLinkedList.ListNode[] nodeArr = new SingleLinkedList.ListNode[len];
+    Node[] nodeArr = new Node[len];
     p = head;
     for (int i = 0; i < nodeArr.length; i++) {
       nodeArr[i] = p;
@@ -63,7 +62,7 @@ public class ListPartition {
    * 第6遍: 1 3 4 7 5 6 left=1, right=3, index=3 (!)
    * inde==max, end while
    **/
-  public static void arrPartition(SingleLinkedList.ListNode[] arr, int pivot) {
+  public static void arrPartition(Node[] arr, int pivot) {
     int left = -1;
     int right = arr.length; //
     int index = 0;
@@ -82,23 +81,22 @@ public class ListPartition {
     }
   }
 
-  public static void swap(SingleLinkedList.ListNode[] arr, int i, int j) {
+  public static void swap(Node[] arr, int i, int j) {
     int temp = arr[i].value;
     arr[i].value = arr[j].value;
     arr[j].value = temp;
   }
 
   // 方法2: refer: images/ListPartition2.png
-  public static SingleLinkedList.ListNode listPartition2(
-      SingleLinkedList.ListNode head, int pivot) {
-    SingleLinkedList.ListNode sH = null;
-    SingleLinkedList.ListNode sT = null;
-    SingleLinkedList.ListNode eH = null;
-    SingleLinkedList.ListNode eT = null;
-    SingleLinkedList.ListNode rH = null;
-    SingleLinkedList.ListNode rT = null;
-    SingleLinkedList.ListNode tmp;
-    SingleLinkedList.ListNode p = head;
+  public static Node listPartition2(Node head, int pivot) {
+    Node sH = null;
+    Node sT = null;
+    Node eH = null;
+    Node eT = null;
+    Node rH = null;
+    Node rT = null;
+    Node tmp;
+    Node p = head;
     while (p != null) {
       tmp = p.next;
       p.next = null;

@@ -16,17 +16,17 @@ public class PalindromeLinkList {
    * 思路: 将其放入栈中，然后一次从栈中取出元素，看是否与当前链表中的元素相同。
    * 栈特点: 先进后出
    * */
-  public static boolean isPalindrome(SingleLinkedList.ListNode head) {
+  public static boolean isPalindrome(Node head) {
     if (head == null || head.next == null) {
       return true;
     }
-    Stack<SingleLinkedList.ListNode> stack = new Stack<SingleLinkedList.ListNode>();
-    SingleLinkedList.ListNode p = head;
+    Stack<Node> stack = new Stack<Node>();
+    Node p = head;
     while (p != null) {
       stack.push(p);
       p = p.next;
     }
-    SingleLinkedList.ListNode q = head;
+    Node q = head;
     while (q != null) {
       if (q.value != stack.pop().value) {
         return false;

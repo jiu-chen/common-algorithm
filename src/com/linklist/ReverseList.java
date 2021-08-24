@@ -6,14 +6,14 @@ package com.linklist;
  * refer: https://segmentfault.com/a/1190000037518253
  */
 public class ReverseList {
-  public static SingleLinkedList.ListNode reverseList(SingleLinkedList.ListNode head) {
+  public static Node reverseList(Node head) {
     if (head == null || head.next == null) {
       return head;
     }
 
-    SingleLinkedList.ListNode prev = null;
-    SingleLinkedList.ListNode cur = head;
-    SingleLinkedList.ListNode nxt;
+    Node prev = null;
+    Node cur = head;
+    Node nxt;
     while (cur != null) {
       nxt = cur.next;
       cur.next = prev;
@@ -29,7 +29,7 @@ public class ReverseList {
     int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; //  midOrUpMidNode:5,  midOrDownMidNode:
     SingleLinkedList L = new SingleLinkedList(arr);
     SingleLinkedList.printList(L.head);
-    SingleLinkedList.ListNode resNode = reverseList(L.head);
+    Node resNode = reverseList(L.head);
     SingleLinkedList.printList(resNode);
 
     // test `null`

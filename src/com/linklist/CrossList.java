@@ -10,14 +10,13 @@ package com.linklist;
  * 然后两个链表一次走，当两个链表的节点相等时候就是交点
  * */
 public class CrossList {
-  public static SingleLinkedList.ListNode commonNodeofLists(
-      SingleLinkedList.ListNode head1, SingleLinkedList.ListNode head2) {
+  public static Node commonNodeofLists(Node head1, Node head2) {
     if (head1 == null || head2 == null) {
       return null;
     }
     int gap = 0; // gap表示两个链表长度上的差值，可能为负数
-    SingleLinkedList.ListNode cur1 = head1;
-    SingleLinkedList.ListNode cur2 = head2;
+    Node cur1 = head1;
+    Node cur2 = head2;
     while (cur1.next != null) {
       cur1 = cur1.next;
       gap++;
@@ -52,10 +51,10 @@ public class CrossList {
     SingleLinkedList L1 = new SingleLinkedList(arr);
     SingleLinkedList L2 = new SingleLinkedList(8);
     int i = 1;
-    SingleLinkedList.ListNode p1 = L1.head;
-    SingleLinkedList.ListNode p2 = L2.head;
+    Node p1 = L1.head;
+    Node p2 = L2.head;
     while (i <= 3) {
-      p2.next = new SingleLinkedList.ListNode(2 * i);
+      p2.next = new Node(2 * i);
       i++;
       p1 = p1.next.next;
       p2 = p2.next;
@@ -66,7 +65,7 @@ public class CrossList {
     System.out.println("print list2: ");
     SingleLinkedList.printList(L2.head);
 
-    SingleLinkedList.ListNode node = commonNodeofLists(L1.head, L2.head);
+    Node node = commonNodeofLists(L1.head, L2.head);
     if (node == null) {
       System.out.println("no common node in list1 and list2");
     } else {
