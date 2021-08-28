@@ -28,7 +28,16 @@ public class BinTree {
     return treeNode;
   }
 
-  // 递归序
+  /*
+   * 二叉树
+   *          1
+   *        2   3
+   *      4 5  6 7
+   */
+  // 递归序:  1 2 4 4 4 2 5 5 5 2 1 3 6 6 6 3 7 7 7 1
+  // 先序遍历: 数字第1次出现的顺序: 1 2 4 5 3 6 7
+  // 中序遍历: 数字第2次出现的顺序: 4 2 5 1 6 3 7
+  // 后序遍历: 数字第3次出现的顺序: 4 5 2 6 7 3 1
   // 先序遍历 * 中序遍历 * 后序遍历
   public static void f(Node head) {
     if (head == null) {
@@ -106,6 +115,13 @@ public class BinTree {
    * 1. 整条左边界依次入栈
    * 2. 如果1无法继续，弹出节点并打印，然后执行右子树
    *
+   * 或者这么想:
+   * 中序遍历:
+   *  左根右
+   *     左根右
+   *        左根右
+   *            ...
+   * 每个右子树都要被分解为左根右
    */
   public static void inOrder(Node head) {
     if (head == null) {
@@ -149,36 +165,32 @@ public class BinTree {
 
   /*
    * 求二叉树最大层宽度
+   * 思路: 使用一个size变量记录当前queue的大小，
+   * 然后每一个批次豆浆同一层的元素装入到queue中
+   * 这样queue中的元素个数最大值就是二叉树的最大宽度
    */
   public static int maxWidth(Node head) {
     if (head == null) return 0;
 
     Queue<Node> queue = new LinkedList<>();
     queue.add(head);
-    Node curEnd = head; // 标记当前层最右节点
-    Node nextEnd = null; // 标记下一层最右节点
 
     int max = 0; // 最大宽度
-    int curLevelNodes = 0; // 当前层节点数
 
     while (!queue.isEmpty()) {
-      Node cur = queue.poll();
-      if (cur.left != null) {
-        queue.add(cur.left);
-        nextEnd = cur.left;
-      }
-      if (cur.right != null) {
-        queue.add(cur.right);
-        nextEnd = cur.right;
-      }
-      curLevelNodes++;
-
-      if (cur == curEnd) {
-        max = Math.max(max, curLevelNodes);
-        curLevelNodes = 0;
-        curEnd = nextEnd;
+      int size = queue.size();
+      max = Math.max(size, max);
+      for (int i = 1; i <= size; i++) {
+        Node cur = queue.poll();
+        if (cur.left != null) {
+          queue.add(cur.left);
+        }
+        if (cur.right != null) {
+          queue.add(cur.right);
+        }
       }
     }
+
     return max;
   }
 
@@ -248,6 +260,7 @@ public class BinTree {
     System.out.print("二叉树层序遍历: ");
     level(rootLevelNode);
 
+    //    int maxWidth = maxWidth(rootNode);
     int maxWidth = maxWidth(rootLevelNode);
     System.out.println("max width: " + maxWidth);
 
