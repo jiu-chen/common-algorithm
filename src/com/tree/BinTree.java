@@ -4,16 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-class Node {
-  public int value;
-  public Node left = null;
-  public Node right = null;
-
-  public Node(int v) {
-    value = v;
-  }
-}
-
 public class BinTree {
 
   // 递归发创建二叉树
@@ -260,8 +250,10 @@ public class BinTree {
     System.out.print("二叉树层序遍历: ");
     level(rootLevelNode);
 
+    Node testNode = createTestTree();
     //    int maxWidth = maxWidth(rootNode);
-    int maxWidth = maxWidth(rootLevelNode);
+    //    int maxWidth = maxWidth(rootLevelNode);
+    int maxWidth = maxWidth(testNode);
     System.out.println("max width: " + maxWidth);
 
     //    int[] smallArr = {3, 6, 7};
@@ -272,5 +264,14 @@ public class BinTree {
 
     boolean contains = isContains(rootNode, smallNode);
     System.out.println("big contains small: " + contains);
+  }
+
+  private static Node createTestTree() {
+    Node head = new Node(1);
+    head.left = new Node(2);
+    head.right = new Node(4);
+    head.left.right = new Node(3);
+    head.left.right.left = new Node(5);
+    return head;
   }
 }
