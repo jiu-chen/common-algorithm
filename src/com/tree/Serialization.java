@@ -7,7 +7,7 @@ import java.util.Queue;
  * 思路:
  * 类似与先序遍历
  */
-public class TreeSerialization {
+public class Serialization {
 
   // 先序方式序列化: 将二叉树存储为队列
   public static Queue<String> preSerial(Node head) {
@@ -172,7 +172,7 @@ public class TreeSerialization {
     System.out.println("先序方式反序列化");
     Queue<String> queue = createPreQueue();
     Node root = preDeserial(queue);
-    LevelTraverse.level(root);
+    BinTree.level(root);
 
     System.out.println("层序遍历序列化");
     Queue<String> ans2 = levelSerial(rootNode);
@@ -182,7 +182,7 @@ public class TreeSerialization {
     Queue<String> queue2 = createLevelQueue();
     Node root2 = levelDeserial(queue2);
     printQueue(queue2);
-    LevelTraverse.level(root2);
+    BinTree.level(root2);
     BinTree.preOrder(root2);
   }
 }

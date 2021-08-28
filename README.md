@@ -6,6 +6,7 @@ including:
 - tree
 - linkedlist
 - heap
+- kmp
 
 ## tips
 
