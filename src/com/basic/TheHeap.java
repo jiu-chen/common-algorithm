@@ -2,12 +2,12 @@ package com.basic;
 
 import java.util.Arrays;
 
-public class MaxHeap {
+public class TheHeap {
   private int[] heap;
   private final int limit;
   private int heapSize;
 
-  public MaxHeap(int limit) {
+  public TheHeap(int limit) {
     heap = new int[limit];
     this.limit = limit;
     heapSize = 0;
@@ -124,7 +124,7 @@ public class MaxHeap {
 
   public static void main(String[] args) {
     int[] arr = {5, 3, 7, 6, 2, 4, 1};
-    MaxHeap h = new MaxHeap(arr.length);
+    TheHeap h = new TheHeap(arr.length);
 
     for (int i = 0; i < arr.length; i++) {
       h.push(arr[i]);
