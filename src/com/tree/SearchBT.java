@@ -2,6 +2,7 @@ package com.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /*
  * 搜索二叉树:
@@ -65,12 +66,28 @@ public class SearchBT {
 
   // 方法2: 非递归中序遍历
   public static boolean checkBST3(Node head) {
+    int min = Integer.MIN_VALUE;
+    Stack<Node> stack = new Stack<>();
+    while (!stack.isEmpty() || head != null) { // 注意判断条件
+      if (head != null) {
+        stack.push(head);
+        head = head.left;
+      } else {
+        head = stack.pop();
+        if (head.value <= min) {
+          return false;
+        } else {
+          min = head.value;
+        }
+        head = head.right;
+      }
+    }
     return true;
   }
 
   private static Node createBSTree() {
     Node root = new Node(5);
-    root.left = new Node(7);
+    root.left = new Node(3);
     root.right = new Node(8);
     //    root.left.left = new Node(1);
     root.left.right = new Node(4);
@@ -82,11 +99,13 @@ public class SearchBT {
     Node rootNode = BinTree.createBinaryTree(arr, 0);
     System.out.println("是否是搜索二叉树checkBST1: " + checkBST1(rootNode));
     System.out.println("是否是搜索二叉树checkBST2: " + checkBST2(rootNode));
+    System.out.println("是否是搜索二叉树checkBST3: " + checkBST3(rootNode));
 
     Node root = createBSTree();
     System.out.print("层序遍历: ");
     BinTree.level(root);
     System.out.println("是否是搜索二叉树checkBST1: " + checkBST1(root));
     System.out.println("是否是搜索二叉树checkBST2: " + checkBST2(root));
+    System.out.println("是否是搜索二叉树checkBST3: " + checkBST3(root));
   }
 }
