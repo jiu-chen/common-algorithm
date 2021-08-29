@@ -7,6 +7,7 @@ package com.tree;
  */
 public class FullBinTree {
   // 此类题目都可以通过树形DP思路去解答
+  // 包括 判断是否是搜索二叉树 满二叉树 平衡二叉树
   public static class Info {
     public int height;
     public int nodes;
@@ -40,7 +41,6 @@ public class FullBinTree {
   }
 
   public static void main(String[] args) {
-
     int[] arr = {1, 2, 3, 4, 5, 6, 7};
     Node rootNode = BinTree.createBinaryTree(arr, 0);
     System.out.print("层序遍历: ");
