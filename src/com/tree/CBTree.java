@@ -47,4 +47,22 @@ public class CBTree {
     }
     return true;
   }
+
+  private static Node createCBTree() {
+    Node root = new Node(5);
+    root.left = new Node(3);
+    root.right = new Node(8);
+    //    root.left.left = new Node(1);
+    root.left.right = new Node(4);
+    return root;
+  }
+
+  public static void main(String[] args) {
+    int[] arr = {1, 2, 3, 4, 5, 6, 7};
+    Node rootNode = BinTree.createBinaryTree(arr, 0);
+    System.out.println("rootNode是否是搜索二叉树checkBST1: " + isCBT(rootNode));
+
+    Node root = createCBTree();
+    System.out.println("root是否是搜索二叉树checkBST1: " + isCBT(root));
+  }
 }
