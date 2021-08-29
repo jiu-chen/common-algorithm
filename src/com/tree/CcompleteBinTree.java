@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * 设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数， 第 h 层所有的结点都连续集中在最左边
  * 第 h 层所有的结点都连续集中在最左边
  */
-public class CBTree {
+public class CcompleteBinTree {
   /*
    * 判断一颗二叉树是否是完全二叉树
    * 方法: 利用层序遍历（宽度优先遍历）
@@ -40,7 +40,7 @@ public class CBTree {
         queue.add(r);
       }
 
-      // 遇到了叶子节点
+      // 遇到了叶子节点: 左右孩子不双全
       if (l == null || r == null) {
         leaf = true;
       }
