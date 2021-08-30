@@ -2,8 +2,13 @@
 
 including:
 
-- sort
+- sorts
 - tree
+    + balance tree
+    + search tree
+    + full tree
+    + complete tree
+    + ...
 - linkedlist
 - heap
 - kmp
