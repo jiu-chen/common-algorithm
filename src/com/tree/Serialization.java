@@ -4,8 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 /* *
  * 序列化就是将二叉树以数组的方式存放起来
- * 思路:
- * 类似与先序遍历
+ * 思路: 先序遍历
  */
 public class Serialization {
 
@@ -46,9 +45,9 @@ public class Serialization {
     return head;
   }
 
-  // 二叉树层序遍历序列化
   /*
-   *  对比二叉树层序遍历
+   * 二叉树层序遍历序列化
+   * 思路: 二叉树层序遍历
    */
   public static Queue<String> levelSerial(Node head) {
     Queue<String> ans = new LinkedList<>();
