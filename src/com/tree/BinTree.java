@@ -213,7 +213,7 @@ public class BinTree {
     if (head1 != null && head2 == null) {
       return false;
     }
-    // 实际上到这里 head2 肯定是null
+    // Condition 'head2 == null' is always 'true' when reached  why ???
     if (head1 == null && head2 == null) {
       return true;
     }
@@ -243,10 +243,13 @@ public class BinTree {
     // 多看构建方法， 递归的奥秘
     // index就是数组的下标
     Node rootLevelNode = BinTree.createBinaryTree(arrLevel, 0);
-    //                 1
-    //          2            3
-    //      4       5     6     7
-    //     8 9    10 11 12
+    //                  1
+    //             /       \
+    //           2          3
+    //        /   \       /   \
+    //      4      5     6     7
+    //     / \    / \   /
+    //     8 9   10 11 12
     System.out.print("二叉树层序遍历: ");
     level(rootLevelNode);
 
