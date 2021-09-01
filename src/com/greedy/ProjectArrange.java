@@ -15,13 +15,22 @@ public class ProjectArrange {
   }
 
   public static class ProectComparator implements Comparator<Project> {
-    // return
-    // > 0：升序
-    // < 0：降序
-    // ===0: 相同
+    /*
+     * refer: https://blog.csdn.net/u013066244/article/details/78895747
+     * 返回值 负数决定其是否要调整顺序：
+     * 如果你想升序，那么o1比o2小就是我想要的；所以返回-1，类比成false；表示我不想调整顺序
+     * 如果你想降序，那么o1比o2小不是我想要的；所以返回1，类比成true；表示我想调整顺序
+     */
     @Override
     public int compare(Project p1, Project p2) {
-      return p1.endTime - p2.endTime;
+      if (p1.endTime < p2.endTime) {
+        return -1;
+      } else if (p1.endTime > p2.endTime) {
+        return 1;
+      } else {
+        return 0;
+      }
+      //      return p1.endTime - p2.endTime;
     }
   }
 
