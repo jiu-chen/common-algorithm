@@ -40,10 +40,10 @@ public class ProjectArrange {
   public static int bestArrange(Project[] projects, int point) {
     Arrays.sort(projects, new ProectComparator());
     int count = 0;
-    for (int i = 0; i < projects.length; i++) {
-      if (point <= projects[i].startTime) {
+    for (Project project : projects) {
+      if (point <= project.startTime) {
         count++;
-        point = projects[i].endTime;
+        point = project.endTime;
       }
     }
     return count;
