@@ -14,7 +14,7 @@ import java.util.Stack;
  *  1. 左节点都比当前节点小
  *  2. 右节点都比当前节点大
  */
-public class SearchBT {
+public class SearchBinTree {
 
   /*
    * 判断一个二叉树是否是搜索二叉树

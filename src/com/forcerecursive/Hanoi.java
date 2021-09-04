@@ -13,6 +13,8 @@ public class Hanoi {
     }
   }
   // 1~i 圆盘 目标是from ~ to, other是另一个
+  // 使用递归思想去考虑问题，read: readme.txt
+  // refer: images/hanio.png
   public static void func(int i, String start, String end, String other) {
     if (i == 1) {
       System.out.println("Move 1 from " + start + " to " + end);
