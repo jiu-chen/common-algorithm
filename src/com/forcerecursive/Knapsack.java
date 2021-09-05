@@ -5,7 +5,7 @@ package com.forcerecursive;
  * i号物品的重量和价值。给定一个正数bag, 表示一个载重bag的袋子，你装的物品不能超过
  * 这个重量。返回你能装下最多的价值是多少？
  */
-public class Knapscak {
+public class Knapsack {
   public static int maxValue(int[] weights, int[] values, int bag) {
     return process(weights, values, 0, 0, bag);
   }
