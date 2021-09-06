@@ -1,0 +1,4 @@
+hash函数:
+
+hash表: 通过hash函数设计出的一种数据结构（hash bucket）
+
