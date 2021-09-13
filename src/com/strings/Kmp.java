@@ -8,42 +8,55 @@ import java.util.Arrays;
  */
 public class Kmp {
 
-  /** 计算部分匹配表 */
-  public static int[] kmpnext(String dest) {
-    int[] next = new int[dest.length()];
-    next[0] = 0;
-
-    for (int i = 1, j = 0; i < dest.length(); i++) {
-      while (j > 0 && dest.charAt(j) != dest.charAt(i)) {
-        j = next[j - 1];
-      }
-      if (dest.charAt(i) == dest.charAt(j)) {
-        j++;
-      }
-      next[i] = j;
+  /** KMP 匹配 */
+  public static int kmp(String s, String m) {
+    if (s == null || m == null || m.length() < 1 || s.length() <= m.length()) {
+      return -1;
     }
-    return next;
+    char[] str1 = s.toCharArray();
+    char[] str2 = m.toCharArray();
+    int i1 = 0;
+    int i2 = 0;
+
+    // 1.计算 next 数组
+    int[] next = getNextArray(str2);
+    System.out.println("next = " + Arrays.toString(next));
+
+    // 2.查找匹配位置
+    while (i1 < str1.length && i2 < str2.length) {
+      if (str1[i1] == str2[i2]) {
+        i1++;
+        i2++;
+      } else if (next[i2] == -1) { // 等价于if(i1==0), 因为我们规定str2[0]=-1
+        i1++;
+      } else {
+        i2 = next[i2];
+      }
+    }
+    // i2 越界或者i2越界了
+    return i2 == str2.length ? i1 - i2 : -1;
   }
 
-  /** KMP 匹配 */
-  public static int kmp(String str, String dest) {
-    // 1.首先计算出 部分匹配表
-    int[] next = kmpnext(dest);
+  private static int[] getNextArray(char[] ms) {
+    if (ms.length == 1) {
+      return new int[] {-1};
+    }
+    int[] next = new int[ms.length];
+    next[0] = -1;
+    next[1] = 0;
 
-    System.out.println("next =" + Arrays.toString(next));
-    // 2.查找匹配位置
-    for (int i = 0, j = 0; i < str.length(); i++) {
-      while (j > 0 && str.charAt(i) != dest.charAt(j)) {
-        j = next[j - 1];
-      }
-      if (str.charAt(i) == dest.charAt(j)) {
-        j++;
-      }
-      if (j == dest.length()) {
-        return i - j + 1;
+    int i = 2; // Next数组的位置
+    int cn = 0; // cn: 与i-1上的字符进行比对的字符的下标
+    while (i < next.length) {
+      if (ms[i - 1] == ms[cn]) {
+        next[i++] = ++cn;
+      } else if (cn > 0) { // 当前跳到cn位置的字符，和i-1位置的字符配不上
+        cn = next[cn];
+      } else {
+        next[i++] = 0;
       }
     }
-    return -1;
+    return next;
   }
 
   /*
@@ -59,16 +72,16 @@ public class Kmp {
   }
 
   public static void main(String[] args) {
-    String a = "ABACABAD";
-    String b = "BBC ABACABACABAD ABCDABDE";
-    int result = kmp(b, a);
+    String a = "BBC ABACABADAD ABCDABDE";
+    String b = "ABACABAD";
+    int result = kmp(a, b);
 
     // 打印结果：和字符串获得匹配的位置
     System.out.println("result position: " + result);
 
     String str1 = "abcdefg";
-    //    String str2 = "defgabc";
-    String str2 = "defgacc";
+    String str2 = "defgabc";
+    //    String str2 = "defgacc";
     System.out.println("str1和str互为旋转词: " + isSpin(str1, str2));
   }
 }
