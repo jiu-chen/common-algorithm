@@ -17,7 +17,7 @@ public class LowestLexicographer {
     public int compare(String a, String b) {
       String ab = a + b;
       String ba = b + a;
-      return ab.compareTo(ba);
+      return ab.compareTo(ba); // -1，0表示不交换a,b的顺序，1表示交换a,b顺序
     }
   }
 

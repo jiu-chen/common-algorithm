@@ -9,12 +9,20 @@ public class ArrDistanceLessK {
   public static class Mycomp implements Comparator<Integer> {
     /*
      * 规定:
-     * 如果返回负数，则前面数小
-     * 如果返回正数，则前面数大
+     * 如果返回负数，表示不调整顺序
+     * 如果返回正数，表述调整顺序
      */
     @Override
-    public int compare(Integer o1, Integer o2) {
-      return o2 - o1;
+    public int compare(Integer m, Integer n) {
+      if (m < n) {
+        return 1; // 表示调整m,n的顺序
+      } else if (m > n) {
+        return -1; // 表示不调整m,n的顺序
+      } else {
+        return 0;
+      }
+
+      //      return n - m;
     }
   }
   /* *
