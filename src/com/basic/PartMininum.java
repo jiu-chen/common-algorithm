@@ -9,7 +9,8 @@ public class PartMininum {
   public static void main(String[] args) {
     //    int[] arr = {5, 1, 4, 3, 5, 8, 6};
     //    int[] arr = {5, 1, 4, 3, 5, 8, 9};
-    int[] arr = {3, 5, 6, 7, 5, 8, 9};
+    //    int[] arr = {3, 5, 6, 7, 5, 8, 9};
+    int[] arr = {3, 5};
     int v = getPartMin(arr);
     System.out.println("第一个找到的局部最小值为: " + v);
   }
@@ -22,14 +23,16 @@ public class PartMininum {
     L = 0;
     R = arr.length - 1;
 
+    // 规律一：如果nums[i] < nums[i+1]，则在i之前一定存在局部最小元素
+    // 规律二：如果nums[i] > nums[i+1]，则在i+1之后一定存在局部最小元素
+    // 不应该使用mid-1， 因为可能越界
+    // 类似题目 leetcode寻找峰值元素: https://leetcode-cn.com/problems/find-peak-element/submissions/
     while (L < R) {
       mid = L + ((R - L) >> 1);
-      if (arr[mid - 1] < arr[mid]) {
-        R = mid - 1;
-      } else if (arr[mid + 1] < arr[mid]) {
-        L = mid + 1;
+      if (arr[mid] < arr[mid + 1]) {
+        R = mid;
       } else {
-        return arr[mid];
+        L = mid + 1;
       }
     }
     return arr[L]; // ! essential
