@@ -117,16 +117,17 @@ public class BinTree {
     if (head == null) {
       System.exit(1);
     }
+    Node cur = head;
 
     Stack<Node> stack = new Stack<>();
-    while (!stack.isEmpty() || head != null) {
-      if (head != null) {
-        stack.push(head);
-        head = head.left;
+    while (!stack.isEmpty() || cur != null) {
+      if (cur != null) {
+        stack.push(cur);
+        cur = cur.left;
       } else {
-        head = stack.pop();
-        System.out.print(head.value + " ");
-        head = head.right;
+        cur = stack.pop();
+        System.out.print(cur.value + " ");
+        cur = cur.right;
       }
     }
     System.out.println();

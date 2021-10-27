@@ -2,7 +2,7 @@ package com.forcerecursive;
 
 /*
  * 岛问题
- *
+ * 类似题型: https://leetcode-cn.com/problems/surrounded-regions/
  * [题目]
  * 一个矩阵只有0和1两中值，每个位置都可以和自己的上下左右四个位置相连，如果有一片1连在一起，这个部分叫做一个岛
  * 求一个矩阵有多少个岛。
@@ -19,32 +19,34 @@ package com.forcerecursive;
  */
 public class IsLand {
   // 复杂度: O(M*N)
-  public static int countIsLnad(int[][] m) {
-    int M = m.length; // 行数
-    int N = m[0].length; // 列数
+  static int M, N;
+
+  public static int countIsLand(int[][] m) {
+    M = m.length; // 行数
+    N = m[0].length; // 列数
     int res = 0;
 
     for (int i = 0; i < M; i++) {
       for (int j = 0; j < N; j++) {
         if (m[i][j] == 1) {
           res++;
-          infect(m, i, j, M, N);
+          infect(m, i, j);
         }
       }
     }
     return res;
   }
 
-  // 将1周围所有是1元素的全部"感染", 并继续递归
-  private static void infect(int[][] m, int i, int j, int M, int N) {
+  // 将1周围所有是1元素的全部"感染"成为2, 并继续递归
+  private static void infect(int[][] m, int i, int j) {
     if (i < 0 || i >= M || j < 0 || j >= N || m[i][j] != 1) {
       return;
     }
     m[i][j] = 2;
-    infect(m, i - 1, j, M, N);
-    infect(m, i + 1, j, M, N);
-    infect(m, i, j - 1, M, N);
-    infect(m, i, j + 1, M, N);
+    infect(m, i - 1, j);
+    infect(m, i + 1, j);
+    infect(m, i, j - 1);
+    infect(m, i, j + 1);
   }
 
   public static void main(String[] args) {
@@ -55,7 +57,7 @@ public class IsLand {
       {0, 0, 0, 0}
     };
 
-    System.out.println("island count: " + countIsLnad(arr));
+    System.out.println("island count: " + countIsLand(arr));
 
     int[][] arr2 = {
       {0, 0, 1, 0, 1, 0},
@@ -63,6 +65,6 @@ public class IsLand {
       {1, 0, 0, 1, 0, 0},
       {0, 0, 0, 0, 0, 0}
     };
-    System.out.println("island count: " + countIsLnad(arr2));
+    System.out.println("island count: " + countIsLand(arr2));
   }
 }

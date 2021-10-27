@@ -12,7 +12,8 @@ public class QuickSort {
     //    int[] arr = {7, 3, 2, 8, 1, 9, 5, 4, 6, 10};
     //    int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 6, 10, 6};
     //    int[] arr = {4, 6};
-    int[] arr = {7, 3, 2, 8, 1, 9, 5, 4, 10, 6};
+    int[] arr = {6, 4};
+    //    int[] arr = {7, 3, 2, 8, 1, 9, 5, 4, 10, 6};
 
     sort(arr, 0, arr.length - 1);
     System.out.print("\n最终排序: ");
@@ -52,6 +53,7 @@ public class QuickSort {
       //      print(arr);
     }
     // 交换使用的是数组的下标
+    // 没有这一行 [6,4] ==> [6,4]
     swap(arr, i, right);
 
     // 返回新的轴的下标
