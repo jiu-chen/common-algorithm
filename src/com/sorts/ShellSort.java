@@ -25,12 +25,13 @@ public class ShellSort {
     long startTime = System.currentTimeMillis(); // 获取开始时间
 
     // 取gap=4的时得到的结果: 1 6 2 3 5 12 8 4 9 13 11 7 10 15 14
-    //     Kunth序列
+    //     Knuth序列
     int h = 1;
-    while (h <= arr.length / 3) {
+    while (h < arr.length / 3) {
       h = 3 * h + 1;
     }
     int gap = h;
+    System.out.println("gap: " + gap);
     while (gap > 0) {
       for (int i = gap; i < arr.length; i++) {
         for (int j = i; j > gap - 1; j -= gap) {
@@ -38,11 +39,11 @@ public class ShellSort {
         }
       }
       //      gap >>= 1;
-      gap = gap / 3 - 1;
+      gap = (gap - 1) / 3;
     }
 
     // 缩短gap: gap/=2 <=> gap >>= 1
-    // Kunth序列
+    // Knuth序列
     //    int h = 1;
     //    while (h <= arr.length / 3) {
     //      h = 3 * h + 1;
