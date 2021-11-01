@@ -8,6 +8,13 @@ package com.sorts;
  * */
 public class QuickSort {
   public static void main(String[] args) {
+    // fot test
+    // 快速排序第一次排序
+    int[] arr1 = {1, 6, 3, 8, 4, 4, 4, 5};
+    int pivot = 4;
+    quickPartition(arr1, pivot);
+    print(arr1);
+
     //    int[] arr = {1, 4, 6, 9, 10, 2, 3, 5, 8, 7, 0};
     //    int[] arr = {7, 3, 2, 8, 1, 9, 5, 4, 6, 10};
     //    int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 6, 10, 6};
@@ -18,13 +25,6 @@ public class QuickSort {
     sort(arr, 0, arr.length - 1);
     System.out.print("\n最终排序: ");
     print(arr);
-
-    // fot test
-    // 快速排序第一次排序
-    int[] arr1 = {1, 6, 3, 8, 4, 4, 4, 5};
-    int pivot = 4;
-    quickPartition(arr1, pivot);
-    print(arr1);
   }
 
   static void sort(int[] arr, int left, int right) {
@@ -48,7 +48,9 @@ public class QuickSort {
       while (i <= j && arr[j] > pivot) j--;
       // 需要判断 i是否小于j
       //      System.out.println("before swap: left->" + left + ", right->" + right);
-      if (i < j) swap(arr, i, j);
+      //      if (i < j) swap(arr, i, j);
+      // or
+      if (i <= j) swap(arr, i, j);
       //      System.out.println("===");
       //      print(arr);
     }
