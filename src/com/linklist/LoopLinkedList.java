@@ -48,13 +48,11 @@ public class LoopLinkedList {
     if (slow != fast) { // 没有环
       return null;
     }
+    // 到这里说明链表一定有环
     fast = head;
-    while (slow != null && fast != null && slow != fast) {
+    while (slow != fast) {
       slow = slow.next;
       fast = fast.next;
-    }
-    if (slow != fast) {
-      return null;
     }
     return slow;
   }

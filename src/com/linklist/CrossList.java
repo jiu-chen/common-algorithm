@@ -39,7 +39,7 @@ public class CrossList {
       cur1 = cur1.next; // 长的链表先走完差值的那一段
       gap--;
     }
-    while (cur1 != cur2) { // 不满足条件的时候就是
+    while (cur1 != cur2) { // 不满足条件的时候就是连个链表的交点
       cur1 = cur1.next;
       cur2 = cur2.next;
     }
