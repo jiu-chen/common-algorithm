@@ -68,7 +68,10 @@ public class Kmp {
   public static boolean isSpin(String str1, String str2) {
     String tmp = str1 + str1;
     int index = kmp(tmp, str2);
-    return index != -1;
+    //    return index != -1;  // error
+    //    return str1.length() == str2.length() && tmp.contains(str2);
+    // or
+    return str1.length() == str2.length() && index != -1;
   }
 
   public static void main(String[] args) {
@@ -81,7 +84,8 @@ public class Kmp {
 
     String str1 = "abcdefg";
     String str2 = "defgabc";
-    //    String str2 = "defgacc";
-    System.out.println("str1和str互为旋转词: " + isSpin(str1, str2));
+    String str3 = "def";
+    System.out.println("str1和str2互为旋转词: " + isSpin(str1, str2));
+    System.out.println("str1和str3互为旋转词: " + isSpin(str1, str3));
   }
 }
