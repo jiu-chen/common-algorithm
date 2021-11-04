@@ -28,7 +28,8 @@ public class Knapsack {
 
   // dp 0-1背包问题
   // dp[i][j] 表示第i个物品装进限重为j的背包可以获得的最大价值
-  // i-1表示数组的下标
+  // 一维数组weights values: i-1表示数组的下标
+  // 二维数组dp: i-1表示前一个物品
   public static int package02(int[] weights, int[] values, int n, int W) {
     int[][] dp = new int[n + 1][W + 1];
     for (int i = 1; i <= n; i++) {
@@ -49,11 +50,32 @@ public class Knapsack {
     return 0;
   }
 
+  // todo: 完全背包问题
+  // 一共有N种物品，每种物品有无限多个，第i（i从1开始）种物品的重量为w[i]，价值为v[i]。
+  // 在总重量不超过背包承载上限W的情况下，能够装入背包的最大价值是多少？
+  public static int fullPackage(int[] weights, int[] values, int n, int W) {
+    int[][] dp = new int[n + 1][W + 1];
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= W; j++) {
+        if (j < weights[i - 1]) {
+          dp[i][j] = dp[i - 1][j];
+        } else {
+          // 与01背包问题唯一不同的地方:
+          // 01 背包问题: dp[i-1][j - weights[i - 1]]
+          // 完全背包问题: dp[i][j - weights[i - 1]]
+          dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - weights[i - 1]] + values[i - 1]);
+        }
+      }
+    }
+    return dp[n][W];
+  }
+
   public static void main(String[] args) {
     int[] weights = {1, 2, 3, 5};
-    int[] values = {2, 9, 2, 7};
-    int bag = 7;
-    System.out.println("max value: " + package1(weights, values, 4, bag));
-    System.out.println("max value: " + package02(weights, values, 4, bag)); // 15=8+7
+    int[] values = {4, 9, 2, 7};
+    int W = 7;
+    System.out.println("01背包递归: " + package1(weights, values, 4, W));
+    System.out.println("01背包非递归: " + package02(weights, values, 4, W)); // 15=8+7
+    System.out.println("完全背包: " + fullPackage(weights, values, 4, W)); // 15=8+7
   }
 }

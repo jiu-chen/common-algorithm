@@ -9,7 +9,7 @@ including:
     + full tree
     + complete tree
     + ...
-- linkedlist
+- linked list
 - heap
 - kmp
 
