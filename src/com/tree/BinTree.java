@@ -157,7 +157,7 @@ public class BinTree {
   /*
    * 求二叉树最大层宽度
    * 思路: 使用一个size变量记录当前queue的大小，
-   * 然后每一个批次豆浆同一层的元素装入到queue中
+   * 然后每一个批次都将同一层的元素装入到queue中
    * 这样queue中的元素个数最大值就是二叉树的最大宽度
    */
   public static int maxWidth(Node head) {

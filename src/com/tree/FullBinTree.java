@@ -26,7 +26,8 @@ public class FullBinTree {
 
     // 2^height-1 == nodes
     System.out.println(" nodes: " + data.nodes + ", height: " + data.height);
-    return data.nodes == ((1 << data.height) - 1);
+    //    return data.nodes == ((1 << data.height) - 1);
+    return data.nodes == ((Math.pow(2, data.height)) - 1);
   }
 
   private static Info f(Node x) {

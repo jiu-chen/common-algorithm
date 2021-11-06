@@ -50,7 +50,7 @@ public class Knapsack {
     return 0;
   }
 
-  // todo: 完全背包问题
+  // 完全背包问题
   // 一共有N种物品，每种物品有无限多个，第i（i从1开始）种物品的重量为w[i]，价值为v[i]。
   // 在总重量不超过背包承载上限W的情况下，能够装入背包的最大价值是多少？
   public static int fullPackage(int[] weights, int[] values, int n, int W) {

@@ -23,7 +23,7 @@ public class LessMoneySplitGold {
       queue.add(a);
     }
     while (queue.size() > 1) {
-      cur = queue.poll() + queue.poll();
+      cur = queue.poll() + queue.peek();
       sum += cur;
       queue.add(cur);
     }
