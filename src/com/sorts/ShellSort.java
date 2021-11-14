@@ -24,6 +24,25 @@ public class ShellSort {
   static void sort(int[] arr) {
     long startTime = System.currentTimeMillis(); // 获取开始时间
 
+    // 插入排序
+    // gap=1
+    //    for (int i = 1; i < arr.length; i++) {
+    //      for (int j = i; j > 0; j--) {
+    //        if (arr[j - 1] > arr[j]) {
+    //          swap(arr, j - 1, j);
+    //        }
+    //      }
+    //    }
+    // todo 将1用gap代替
+    //    int gap = 1;
+    //    for (int i = gap; i < arr.length; i++) {
+    //      for (int j = i; j > gap - 1; j -= gap) {
+    //        if (arr[j - gap] > arr[j]) {
+    //          swap(arr, j - gap, j);
+    //        }
+    //      }
+    //    }
+
     // 取gap=4的时得到的结果: 1 6 2 3 5 12 8 4 9 13 11 7 10 15 14
     //     Knuth序列
     int h = 1;

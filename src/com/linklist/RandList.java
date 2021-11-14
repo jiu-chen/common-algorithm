@@ -43,7 +43,7 @@ public class RandList {
 
   /*
    * 深拷贝一个带有rand指针的单链表
-   * 思路: 使用HashMap. key: Node, value: new Node
+   * 思路: 使用HashMap. key: old Node, value: new Node
    * 先拷贝节点上面的值，然后拷贝节点的next指针和rand指针
    * // 旧Node:  cur
    * // 新Node: map.get(cur)
@@ -51,7 +51,7 @@ public class RandList {
    * map.get(cur).next = map.get(cur.next)
    * */
   public static Node copyListWithRand(Node head) {
-    HashMap<Node, Node> map = new HashMap<Node, Node>();
+    HashMap<Node, Node> map = new HashMap<>();
     Node cur = head;
     while (cur != null) {
       map.put(cur, new Node(cur.value));

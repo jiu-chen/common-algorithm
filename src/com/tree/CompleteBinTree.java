@@ -21,7 +21,7 @@ public class CompleteBinTree {
     if (head == null) return true;
     LinkedList<Node> queue = new LinkedList<>();
     queue.add(head);
-    boolean leaf = false;
+    boolean isLeaf = false;
     Node l = null;
     Node r = null;
 
@@ -29,7 +29,7 @@ public class CompleteBinTree {
       head = queue.poll();
       l = head.left;
       r = head.right;
-      if ((l == null && r != null) || (leaf && (l != null || r != null))) {
+      if ((l == null && r != null) || (isLeaf && (l != null || r != null))) {
         // 遇到了不双全的节点之后，又发现当前节点不是叶子节点
         return false;
       }
@@ -42,7 +42,7 @@ public class CompleteBinTree {
 
       // 遇到了叶子节点: 左右孩子不双全
       if (l == null || r == null) {
-        leaf = true;
+        isLeaf = true;
       }
     }
     return true;

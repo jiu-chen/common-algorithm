@@ -2,6 +2,7 @@ package com.linklist;
 
 import java.util.Stack;
 
+// 回文链表
 public class PalindromeLinkList {
   public static void main(String[] args) {
     //    int[] arr = {1, 2, 3, 2, 1};
@@ -12,7 +13,7 @@ public class PalindromeLinkList {
   }
 
   /*
-   * 输入链表头节点(首元节点)，判断一个链表是否是回文数
+   * 输入链表头节点(首元节点)，判断一个链表是否是回文链表
    * 思路: 将其放入栈中，然后一次从栈中取出元素，看是否与当前链表中的元素相同。
    * 栈特点: 先进后出
    * */

@@ -21,6 +21,7 @@ public class IsLand {
   // 复杂度: O(M*N)
   static int M, N;
 
+  // 遇到第一个1就将count加1，并将与该位置grid[i][j]相连的1都改为2
   public static int countIsLand(int[][] m) {
     M = m.length; // 行数
     N = m[0].length; // 列数
